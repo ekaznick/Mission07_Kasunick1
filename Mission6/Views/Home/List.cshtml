@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark fw-bold">
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th class="w-15">Lent to</th> <!-- Adjust the width as needed -->
+            <th class="w-15">Copied to Plex</th> <!-- Adjust the width as needed -->
+            <th>Notes</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td class="w-15">@x.LentTo</td> <!-- Adjust the width as needed -->
+                <td class="w-15">@x.CopiedToPlex</td> <!-- Adjust the width as needed -->
+                <td>@x.Notes</td>
+
+                <td>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
